@@ -2,16 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-
+/**
+ * ReactDOM.render(element, container[, callback])
+ * element: 需要渲染在container的元素
+ * container: 获取到的HTML容器，在这里是指id为root的容器，也就是public中html的div.id = 'root' 
+ * callback: //TODO:这个回调函数会在每次render执行后执行，也就是被渲染和更新时
+ */
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <App prop="Hello" />,
+  document.getElementById('root'),
+  () => {
+    console.log(App)
+    console.table(ReactDOM)
+  }
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
