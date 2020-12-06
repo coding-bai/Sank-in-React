@@ -1,6 +1,12 @@
+# 从HelloWord开始
+
 ## 为什么重读
 
 > 因为本人最初学习react只是草草的略读文档，并没有深入的思考和了解，只是在当时完成业务和基本的使用，现在打算从0开始，细细品读react官方的各类文档。我们将更多思考为什么？
+
+## React是什么？
+
+React.js 不是一个框架，它只是一个库。它只提供 UI （view）层面的解决方案。在实际的项目当中，它并不能解决我们所有的问题，需要结合其它的库，例如 Redux、React-router 等来协助提供完整的解决方法。
 
 ## 第一行代码`HelloWorld`
 
@@ -81,6 +87,28 @@ React.createElement(
 > 在这里React提出了**函数组件**和**class**组件两种方式，首先你肯定会有个问题，函数组件的话多方便，为什么要有class组件这个东西，其实这么说吧，首先因为`React.Component`是一个类，所以我们需要使用这其中的方法就要用到继承，得（dé）,这就是原因，facebook工程师在实现`React.Component`使用了类，所以说我们只要使用类中的方法都得使用类。
 
 在上面的部分我们说到了我们在`Babel`和`React.createElement`的联手下都会将我们的`jsx`转化为React元素，也就是这一元素，使得React支持了我们最喜欢的自定义组件，毕竟只是传入的参数不一样罢了。这样你是否可以理解了呢。
+比如我们自定义一个HelloWorld组件：
+
+```javascript
+ReactDOM.render(
+ <HelloWorld />, 
+  document.getElementById('root')
+)
+```
+
+补充：(render过程)
+
+```javascript
+// React.createElement 中实例化一个 helloWorld
+const helloWorld = new HelloWorld(props, children)
+// React.createElement 中调用 helloWorld.render 方法渲染组件的内容
+const helloWorldJsxObject = helloWorld.render()
+
+// ReactDOM 用渲染后的 JavaScript 对象来来构建真正的 DOM 元素
+const helloWorldDOM = createDOMFromObject(helloWorldJsxObject)
+// ReactDOM 把 DOM 元素塞到页面上
+document.getElementById('root').appendChild(helloWorldDOM)
+```
 
 > 其实现在你所理解的，正是我们日后在React更加深入甚至阅读源码的一些基础思想
 
@@ -91,6 +119,10 @@ React.createElement(
 在你将你所需要传递给子组件的属性(这里的属性包含值)或者组件传递给子组件时，在通过上面所讲述的转化后**将Props作为属性挂载在你的return或者render返回的组件上**，而上面的转化过程就类似于快递运输的过程。
 
 **Warning**:props是国家文件，你只是负责文件的接收和使用，并没有修改的权限哦！
+
+### 状态提升
+
+当某个状态被多个组件依赖或者影响的时候，就把该状态提升到这些组件的最近公共父组件中去管理，用 props 传递数据或者函数来管理这种依赖或着影响的行为。这就是状态提升的思想，但是在现实中我们更多的使用redux和context去解决这类问题。
 
 ---
 今天就看这点东西，作为前端开发，一定要牢记那句话，“不会就看文档，还不会就多看几遍”
