@@ -1,22 +1,27 @@
 ## 为什么重读
+
 > 因为本人最初学习react只是草草的略读文档，并没有深入的思考和了解，只是在当时完成业务和基本的使用，现在打算从0开始，细细品读react官方的各类文档。我们将更多思考为什么？
 
 ## 第一行代码`HelloWorld`
-```
+
+```javascript
 ReactDOM.render(
   <h1>Hello, world!</h1>,
   document.getElementById('root')
 );
 ```
-```
+
+```javascript
 ReactDOM.render(element, container[, callback])
  * element: 需要渲染在container的元素
  * container: 获取到的HTML容器，在这里是指id为root的容器，也就是public中html的div.id = 'root' 
  * callback: //TODO:这个回调函数会在每次render执行后执行，也就是被渲染和更新时,^_^这里就牵扯到react的生命周期了哦
 ```
+
 这里是`React`的重点，我们看看`ReactDOM.render()`，这个看似平凡的函数恰好是React的关键，首先ReactDOM提供的是可在应用顶层使用的dom方法，**为什么这么设计？**，我们可能已经忘记了在React中是不允许直接插入HTML字符串的，我们先大胆猜测一波，是为了安全。
 
 ## JSX
+
 > 首先必须要清楚的一点是JSX是完全拥有js的所有能力的
 
 - 为什么用jsx?
@@ -33,7 +38,8 @@ ReactDOM.render(element, container[, callback])
   - 如果你考虑了这个问题，说明你很认真嘛！哈哈，这里就是大名鼎鼎的babel的功劳了，babel会进行预检查，怎么说呢，就是利用括号匹配的规则和拼接字符串变量的方法来实现HTML元素的生成(这里先大胆猜测一波)。
   - 这里涉及到了一个api，就是`React.createElement()`，这就是为什么你每个React的组件文件都要引入React这个库的原因。
   - 我们来看一下这个转化过程
-```
+
+```javascript
 const element = (
   <h1 className="greeting">
     Hello, world!
@@ -56,8 +62,10 @@ const element = React.createElement(
   'Hello, world!'
 );
 ```
+
 看到这里，我们来看看`React.createElement()`这个api（始终牢记尤大的一句话：不会就看文档）：
-```
+
+```javascript
 /*
 这个函数执行完后会返回一个React元素，也就构成React页面的部分，你可以认为他是HTML页面
 */
