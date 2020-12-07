@@ -55,4 +55,8 @@ ReactDOM.render(
   - `static getDerivedStateFromProps(props, state)`（state 的值在任何时候都取决于 props时使用）
     - 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。
     - 该函数应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
+    - **此方法无权访问组件实例。**
   - `render`(返回应当渲染的元素的纯函数)
+    - 当 render 被调用时，它会检查 this.props 和 this.state 的变化并返回以下类型之一
+      - 由JSX创建的React元素
+      - 数组或 fragments。
