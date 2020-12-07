@@ -1,4 +1,6 @@
-# 重启前端
+# 重启React
+
+![GitHub last commit](https://img.shields.io/github/last-commit/coding-bai/Sank-in-React)
 
 > 为什么要重启，忙于业务的我猛然回头发现我好像只是会使用组件库和进行简单的开发，为了解决这一问题，还是决定从头来过，毕竟还有机会
 
