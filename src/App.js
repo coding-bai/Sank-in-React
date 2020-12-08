@@ -1,10 +1,9 @@
-import './App.css';
-import TestState from './components/TestState'
+import TodoList from './components/TodoList'
 function App(prop) {
   console.log(prop)
   return (
     <div className="App">
-      <TestState></TestState>
+      <TodoList holder="hello"></TodoList>
     </div>
   );
 }
