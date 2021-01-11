@@ -15,4 +15,4 @@
 
 ## React Demo
 
-- [基于React和TypeScript开发的todolist（简单demo）](./react-todolist/README.md)
+- [基于React和TypeScript开发的todolist（简单demo）](./demo/react-todolist/README.md)
